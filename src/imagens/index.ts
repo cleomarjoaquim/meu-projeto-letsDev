@@ -1,3 +1,4 @@
 import Logo from "./lets-dev.png";
+import Banner from "./banner-lets-dev.png";
 
-export{Logo};
+export{Banner,Logo};
