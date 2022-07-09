@@ -34,9 +34,8 @@ const FormCompleto: React.FC = () => {
    }
  
    const cancelar = (event: FormEvent) => {
-     // Evita o redirecionamento padrão para outra tela e  um alert
-    event.preventDefault();
-     alert("Cancelando...");
+    window.location.href="/";
+
    };
 
    useEffect(() => {
@@ -61,14 +60,14 @@ const FormCompleto: React.FC = () => {
 
     <s.Divisor/>
 
-    {/* Aqui começam os itens agrupados em coluna */}
+    
     <s.Formulario onSubmit={enviarFormulario}>
       <s.Aviso>
         <strong>ATENÇÃO:</strong> os campos contendo o asterisco (*) são de
         preenchimento obrigatório!
       </s.Aviso>
 
-      {/* Aqui começam os inputs de digitação */}
+    
       <Row>
 
       <ColumnInput className="input-text">

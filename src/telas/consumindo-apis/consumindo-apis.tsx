@@ -1,7 +1,39 @@
 import * as s from "./styled-consumindo-apis";
 import { ColumnInput, Footer, Header, InputButton } from "../../componentes";
+import axios from "axios";
+
+import { useState } from "react";
+
+
+
+
+
+interface Localidade {
+
+  
+  localidade?: string;
+  uf?: string;
+}
+
+
+
 
 const ConsumindoApis = () => {
+  const [CEP, setCEP] = useState("");
+  const [localidade, setLocalidade] = useState<Localidade>({});
+
+  function buscarLocalidade(cep: string) {
+
+    const baseURL = "https://viacep.com.br/ws";
+
+    axios
+      .get(`${baseURL}/${cep}/json`)
+
+      .then((resposta) => setLocalidade(resposta.data))
+      .catch((erro) => console.log("ERRO", erro));
+      console.log(localidade);
+  }
+
   return (
     <s.Container>
       <Header />
@@ -16,6 +48,7 @@ const ConsumindoApis = () => {
 
         <s.Objetivo>
           <strong>Objetivo:</strong> Fazer a conexão com a API do Via CEP usando
+
           o Axios.
         </s.Objetivo>
 
@@ -23,13 +56,17 @@ const ConsumindoApis = () => {
 
         <ul>
           <li>Criar a função que faz a requisição;</li>
-          <li>Utilizar a seguinte baseURL: “https://viacep.com.br/ws/”;</li>
+          <li>Utilizar a segunte baseURL: “https://viacep.com.br/ws/”;</li>
+
           <li>
+            
             No GET, utilizar o caminho `cep/json` (ex.: `93700000/json`), onde o
             CEP vai só com números;
           </li>
           <li>Salvar no estado o valor digitado no input;</li>
+
           <li>Quando clicar no botão, chama a requisição no onClick;</li>
+
           <li>
             Mostrar em tela o nome da cidade, seguido do estado (ex.: Campo Bom
             - Rio Grande do Sul);
@@ -50,17 +87,28 @@ const ConsumindoApis = () => {
             <input
               type="text"
               placeholder="Digite o um CEP (somente números)"
-              value=""
-              onChange={() => {}}
+              value={CEP}
+              onChange={(evento) =>
+                 setCEP(evento.target.value)}
+              maxLength={8}
             />
           </ColumnInput>
-          <InputButton type="submit" value="Buscar" onClick={() => {}} />
+          <InputButton
+            type="submit"
+            value="Buscar"
+            onClick={() => 
+              buscarLocalidade(CEP)}
+          />
         </s.Row>
 
         <span>
-          <strong>Cidade pesquisada: </strong> fwa fwa
+          <strong>Cidade pesquisada: </strong> {localidade.localidade} 
+          
+          -
+          {localidade.uf}
         </span>
       </s.Content>
+
       <Footer />
     </s.Container>
   );

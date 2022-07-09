@@ -1,18 +1,25 @@
 import * as s from "./styled-home";
 import {
   Footer,
+
   Header,
   TituloSecao,
   Card,
+
+
   InputButton,
 } from "../../componentes";
-import { Logo } from "../../imagens";
-import { useContext } from "react";
+
 import { MyContext } from "../../contexto";
 
+
+import { Cleo, Eu, Logo } from "../../imagens";
+import { useContext } from "react";
+
+
 const Home = () => {
-  const contexto = useContext(MyContext);
-  console.log(contexto);
+  const { setNomeUsuario, 
+    nomeUsuario } = useContext(MyContext);
 
   const telas = [
     {
@@ -53,7 +60,10 @@ const Home = () => {
     <s.Container>
       <Header />
       <s.Banner>
-        <h1>Que prazer te ver aqui, Fulano!</h1>
+
+        <h1>Que prazer te ver aqui,   
+             {" " +nomeUsuario}!
+          </h1>
         <img src={Logo} />
         <h2>
           Seja bem-vindo(a) ao Let’s Dev! O evento que vai transformar sua
@@ -80,35 +90,35 @@ const Home = () => {
         <TituloSecao titulo="Um pouco sobre mim..." />
 
         <s.Row>
-          <img src={Logo} />
+          <img src={Eu} />
           <s.Column>
-            <h3>Aqui vai o nome do(a) Dev</h3>
+            <h3>{nomeUsuario}</h3>
             <p>
-              Este espaço é destinado à sua descrição de perfil. Conta aqui quem
-              você é, gostos, hobbies e o que achar interessante. Descreve
-              também as características profissionais e o que te motivou a
-              ingressar na área do desenvolviemento de software.
+              Sou um sujeito simples, dedicado e focado. Gosto de praticar atividades físicas, assistir séries e filmes.
+              Depois de mais de 10 anos trabalhando e estudando na área de modelamento e  desenvolvimento 3D
+              resolvi mudar o rumo da minha carreira e estudos em busca de novos desafios.
+              No início do ano larguei um emprego estável de quase 7 anos para ir em busca do meu objetivo.
+              Não está sendo fácil, mas eu sei que com o meu esforço e dedicação a hora vai chegar.
             </p>
             <p>
-              Você pode substituir a foto a lado pela sua melhor foto e colocar
-              suas redes nos botões abaixo!
+
             </p>
             <s.ButtonGroup>
               <InputButton
                 outlined
-                type="button"
+                type="submit"
                 value="LinkedIn"
                 onClick={() => {
-                  //Aqui vai o seu perfil do linkedIn
-                  window.open("https://www.linkedin.com", "_blank");
+                  // linkedIn
+                  window.open("https://www.linkedin.com/in/cleomar-joaquim-175269b8/", "_blank");
                 }}
-              />
+              />   
               <InputButton
                 type="submit"
-                value="Ver perfil"
+                value="GitHub"
                 onClick={() => {
-                  //Aqui vai o seu perfil do GitHub
-                  window.open("https://github.com", "_blank");
+                  // GitHub
+                  window.open("https://github.com/cleomarjoaquim", "_blank");
                 }}
               />
             </s.ButtonGroup>

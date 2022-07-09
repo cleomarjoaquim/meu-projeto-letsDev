@@ -1,2 +1,3 @@
-import React from "react";
-const MyContext = React.createContext({mensagem:"opa"});
+import React, { Dispatch, SetStateAction } from "react";
+
+export const MyContext = React.createContext<any>({});

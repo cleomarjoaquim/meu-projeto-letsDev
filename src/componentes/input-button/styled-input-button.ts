@@ -5,11 +5,11 @@ interface InputButtonProps {
 }
 
 export const InputButton = styled.input<InputButtonProps>`
-  text-align : center;
+  text-align: center;
   &[type="submit"],
   &::-webkit-file-upload-button,
   &.outlined {
-
+    
     width: 225px;
     padding: 10px;
     height: 35px;
@@ -19,10 +19,9 @@ export const InputButton = styled.input<InputButtonProps>`
   }
 
   &[type="submit"] {
+    margin-right: 30px;
     background: #7d2eba;
     color: white;
-
-    //Força a estilização
     border: none !important;
 
     :hover {
