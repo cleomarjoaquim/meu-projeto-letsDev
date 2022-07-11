@@ -1,5 +1,5 @@
 import { FormBasico, FormCompleto, Home, ConsumindoApis } from "./telas";
-
+import {SobrePaipers} from "./telas";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MyContext } from "./contexto";
 import { useEffect, useState } from "react";
@@ -35,6 +35,7 @@ function App() {
           <Route path="/form-basico" element={<FormBasico />} />
           <Route path="/" element={<Home />} />
           <Route path="/form-completo" element={<FormCompleto />} />
+          <Route path="/sobre-paipers" element ={<SobrePaipers/>}/>
 
         </Routes>
       </BrowserRouter>
